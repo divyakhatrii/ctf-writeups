@@ -20,7 +20,7 @@ Thus, we build out the primes p and q. We multiply them a final time to ensure t
 
 
 
-##Remediation
+## Remediation
 
 The most immediate remediation technique would be not to use a pattern to generate primes like `[67]*`, and especially do not make said pattern publically known, as this allowed us to iterate through a small, finite range of primes to determine p and q.
 
