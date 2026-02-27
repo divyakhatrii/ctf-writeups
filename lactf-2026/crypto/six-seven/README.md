@@ -1,7 +1,7 @@
 ## Context
 
 <p align="center">
-  <img src="images/67.gif" width="600">
+  <img src="images/67.gif" width="400">
 </p>
 
 The challenge instance first asks for a Proof of Work to make spamming the server with a bot more computationally expensive. An example of a Proof of Work is below:
