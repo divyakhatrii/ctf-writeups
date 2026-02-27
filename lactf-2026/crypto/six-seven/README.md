@@ -1,6 +1,9 @@
 ## Context
 
-![Demo](images/67.gif)
+<p align="center">
+  <img src="images/67.gif" width="600">
+</p>
+
 The challenge instance first asks for a Proof of Work to make spamming the server with a bot more computationally expensive. An example of a Proof of Work is below:
 curl -sSfL https://pwn.red/pow | sh -s s.AAA6mA==.Z5r08nzVnvLrMznfnkqH2A==
 Once you solve this, you are given 2 numbers for the values of n and c and the instance is closed.
@@ -21,8 +24,9 @@ The file `solve67.py` contains the python script written to solve the challenge.
  It begins with the realization that a prime number must be odd and is comprised of 6s and 7s only. Thus, the final digit of each prime must be 7, which aligns with the fact that every n generated ended in 9. Given the limited search space, we can actually go digit by digit, from left to right. 
 Thus, we start with the two numbers 7,7 as our primes and continue to build them going right to left with a loop. In the loop, we look at the last i + 1 digits each time, and add 6 or 7 to the front of the thus-far-valid p and qs. We then try multiplying the new test p and test q, to see if it matches the last i+1 digits. If so, we keep it as a pair for the next part of the loop.
 Thus, we build out the primes p and q. We multiply them a final time to ensure their product is n.  We also ensure that once we have built out the entire numbers p and q that they are, indeed, primes. We use the primes to calculate the totient, phi, which we then use to calculate d, using its relationship as a modular inverse of relative to phi. We then use d to decrypt the cyphertext, as `m = c^d (mod n)`.  Finally, we convert it to bytes and decode it to find the flag.
-![Demo](images/67flag.png)
-
+<p align="center">
+  <img src="images/67flag.png" width="600">
+</p>
 ## Remediation
 
 The most immediate remediation technique would be not to use a pattern to generate primes like `[67]*`, and especially do not make said pattern publically known, as this allowed us to iterate through a small, finite range of primes to determine p and q.
