@@ -15,6 +15,7 @@ The challenge also provides the source code `chall.py` which gives an insight as
 
 Normally, RSA is quite hard to solve. In its typical implementation, the primes, p and q, are roughly 1024 bits each. p x q creates n, the modulus. The original text's ascii numbers are used to numerically convert the text into a number, m. e, which is typically 65537, is used then to create the ciphertext,c, with `c=m^e (mod n)`. e and d are modular inverses, so having d would allow us to recover the original message, m. 
 In traditional, secure RSA, this is nearly impossible to do, as finding d requires the prime factors of n, which should be unfeasible due to how large n is. 
+[This article](https://www.geeksforgeeks.org/computer-networks/rsa-algorithm-cryptography/) goes more in depth into how RSA works.
 
 However, given the fact that we are given the hint of how the primes are generated, the search space of 256-digit primes goes from `10^256` to `2^256`, which makes the primes easier to determine, which ultimately breaks the underlying mechanism of the security behind RSA.
 
@@ -27,6 +28,7 @@ Thus, we build out the primes p and q. We multiply them a final time to ensure t
 <p align="center">
   <img src="images/67flag.png" width="600">
 </p>
+
 ## Remediation
 
 The most immediate remediation technique would be not to use a pattern to generate primes like `[67]*`, and especially do not make said pattern publically known, as this allowed us to iterate through a small, finite range of primes to determine p and q.
